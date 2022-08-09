@@ -20,18 +20,22 @@ public class MovieListApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		// Add new movies to the database through movieRepository
-		/*
+/*
 		Movie movie = new Movie();
 		movie.setMovieName("Haunted");
 		movie.setActor("Bill Hanks");
 		movie.setDirector("Jill Dailey");
+		movie.setRating("5");
+		movie.setComments("Could have been better");
 		movieRepository.save(movie);
 
 		Movie movie2 = new Movie();
 		movie2.setMovieName("Shining");
 		movie2.setActor("Bill Lamber");
 		movie2.setDirector("Lebron James");
+		movie2.setRating("5");
+		movie2.setComments("Great movie");
 		movieRepository.save(movie2);
-		 */
+*/
 	}
 }

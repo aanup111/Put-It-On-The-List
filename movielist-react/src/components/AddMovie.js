@@ -7,6 +7,8 @@ const AddMovie = () => {
   const [movieName, setmovieName] = useState("")
   const [director, setDirector] = useState("")
   const [actor, setActor] = useState("")
+  const [rating, setRating] = useState("")
+  const [comments, setComments] = useState("")
   const navigate = useNavigate();
   // To store id from URL
   const {id} = useParams();
@@ -15,7 +17,7 @@ const AddMovie = () => {
    
     e.preventDefault();
 
-    const movie = {movieName, director, actor};
+    const movie = {movieName, director, actor, rating, comments};
 
     if(id){
         movieApi.updateMovie(id, movie).then((response) => {
@@ -25,8 +27,6 @@ const AddMovie = () => {
         })                
     } else{
         movieApi.createMovie(movie).then((response) => {
-            console.log(response.data)
-            
             //navigatge to list movies page after button is clicked
             navigate('/movies', { replace: true })
         }).catch(error => {
@@ -41,6 +41,8 @@ const AddMovie = () => {
         setmovieName(response.data.movieName)
         setDirector(response.data.director)
         setActor(response.data.actor)
+        setRating(response.data.rating)
+        setComments(response.data.comments)
     }).catch(error =>{
         console.log(error)
     }) 
@@ -90,6 +92,26 @@ const AddMovie = () => {
                         className="form-control"
                         value = {actor}
                         onChange = {(e) => setActor(e.target.value)}
+                    >
+                    </input>
+                    <label className = "form-label">Rating: </label>
+                    <input
+                        type = "text"
+                        placeholder = "Enter Rating"
+                        name = "rating"
+                        className="form-control"
+                        value = {rating}
+                        onChange = {(e) => setRating(e.target.value)}
+                    >
+                    </input>
+                    <label className = "form-label">Comments: </label>
+                    <input
+                        type = "text"
+                        placeholder = "Enter Comments"
+                        name = "comments"
+                        className="form-control"
+                        value = {comments}
+                        onChange = {(e) => setComments(e.target.value)}
                     >
                     </input>
                 </div><br></br>

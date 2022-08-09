@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import movieApi from '../api/movieApi'
 
-const ListMovies = () => {
 
+
+
+const ListMovies = () => {
 const [movies, setMovies] = useState([])
 
-// get list of movies from API and pass to movies STATE
+
+// get list of movies from API/DB and pass to movies STATE
 useEffect(() => { 
     getMovieList()
 }, [])
@@ -23,21 +26,24 @@ const deleteMovie = (movieId) =>{
 const getMovieList = () => {
     movieApi.getAllMovies().then((response) =>{
         setMovies(response.data)
-        console.log(response.data)
     }).catch(error => {
         console.log(error)
     })
 }
 
+
   return (
     <div className='container'>
         <h2 className='text-center'>Put It On The List</h2>
         <Link to ="/add-movie" className = "btn btn-primary mb-2">Add Movie</Link>
+        <Link to ="/search-movies" className = "btn btn-primary mb-2" style ={{marginLeft:"10px"}}>Search Movie</Link>
         <table className='table table-bordered table-striped'>
             <thead>
                 <th>Movie Name</th>
                 <th>Movie Director</th>
                 <th>Movie Actor</th> 
+                <th>Movie Rating</th> 
+                <th>Movie Comments</th> 
                 <th>Actions</th> 
             </thead>
             <tbody>
@@ -48,6 +54,8 @@ const getMovieList = () => {
                              <td>{movie.movieName}</td>
                              <td>{movie.director}</td>
                              <td>{movie.actor}</td>
+                             <td>{movie.rating}</td>
+                             <td>{movie.comments}</td>
                              <td>
                               <Link className='btn btn-info' to={`/edit-movie/${movie.id}`} 
                               >Update</Link>  
@@ -61,7 +69,6 @@ const getMovieList = () => {
                 }
             </tbody>
         </table>
-
     </div>
   )
 }

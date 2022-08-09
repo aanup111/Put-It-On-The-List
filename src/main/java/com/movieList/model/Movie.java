@@ -21,4 +21,6 @@ public class Movie {
     private String movieName;
     private String director;
     private String actor;
+    private String rating;
+    private String comments;
 }

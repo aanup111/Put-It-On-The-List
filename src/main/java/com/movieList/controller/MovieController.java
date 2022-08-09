@@ -49,6 +49,8 @@ public ResponseEntity<Movie> updateMovie(@PathVariable long id, @RequestBody Mov
     updatedMovie.setMovieName(movieDetails.getMovieName());
     updatedMovie.setDirector(movieDetails.getDirector());
     updatedMovie.setActor(movieDetails.getActor());
+    updatedMovie.setRating(movieDetails.getRating());
+    updatedMovie.setComments(movieDetails.getComments());
 
     movieRepository.save(updatedMovie);
     return ResponseEntity.ok(updatedMovie);
