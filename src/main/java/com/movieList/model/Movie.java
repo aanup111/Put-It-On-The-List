@@ -19,8 +19,8 @@ public class Movie {
     private long id;
     @Column(name = "movie_name")
     private String movieName;
-    private String director;
-    private String actor;
-    private String rating;
+    private String anupRating;
+    private String sydneyRating;
     private String comments;
+    private String movieYear;
 }

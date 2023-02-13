@@ -5,9 +5,9 @@ import {useNavigate, useParams} from 'react-router-dom'
 
 const AddMovie = () => {
   const [movieName, setmovieName] = useState("")
-  const [director, setDirector] = useState("")
-  const [actor, setActor] = useState("")
-  const [rating, setRating] = useState("")
+  const [anupRating, setAnupRating] = useState("")
+  const [movieYear, setMovieYear] = useState("")
+  const [sydneyRating, setSydneyRating] = useState("")
   const [comments, setComments] = useState("")
   const navigate = useNavigate();
   // To store id from URL
@@ -17,7 +17,7 @@ const AddMovie = () => {
    
     e.preventDefault();
 
-    const movie = {movieName, director, actor, rating, comments};
+    const movie = {movieName, anupRating, movieYear, sydneyRating, comments};
 
     if(id){
         movieApi.updateMovie(id, movie).then((response) => {
@@ -39,9 +39,9 @@ const AddMovie = () => {
   useEffect(() => {    
     movieApi.getMovieById(id).then((response) => {
         setmovieName(response.data.movieName)
-        setDirector(response.data.director)
-        setActor(response.data.actor)
-        setRating(response.data.rating)
+        setAnupRating(response.data.anupRating)
+        setMovieYear(response.data.movieYear)
+        setSydneyRating(response.data.sydneyRating)
         setComments(response.data.comments)
     }).catch(error =>{
         console.log(error)
@@ -51,7 +51,7 @@ const AddMovie = () => {
   const title = () => {
 
      if(id) {
-         return <h2 className = "text-center">Update Movie YES</h2>
+         return <h2 className = "text-center">Update Movie</h2>
      } else{
         return <h2 className = "text-center">Add New Movie To List</h2>
      }
@@ -73,35 +73,35 @@ const AddMovie = () => {
                     >
                     </input>
 
-                    <label className = "form-label">Director: </label>
+                    <label className = "form-label">Anup Rating: </label>
                     <input
                         type = "text"
-                        placeholder = "Enter Director"
+                        placeholder = "Enter IMDB Rating"
                         name = "director"
                         className="form-control"
-                        value = {director}
-                        onChange = {(e) => setDirector(e.target.value)}
+                        value = {anupRating}
+                        onChange = {(e) => setAnupRating(e.target.value)}
                     >
                     </input>
 
-                    <label className = "form-label">Actor: </label>
+                    <label className = "form-label">Movie Year: </label>
                     <input
                         type = "text"
-                        placeholder = "Enter Actor"
+                        placeholder = "Enter Movie Description"
                         name = "actor"
                         className="form-control"
-                        value = {actor}
-                        onChange = {(e) => setActor(e.target.value)}
+                        value = {movieYear}
+                        onChange = {(e) => setMovieYear(e.target.value)}
                     >
                     </input>
-                    <label className = "form-label">Rating: </label>
+                    <label className = "form-label">Sydney Rating: </label>
                     <input
                         type = "text"
-                        placeholder = "Enter Rating"
+                        placeholder = "Enter Your Rating"
                         name = "rating"
                         className="form-control"
-                        value = {rating}
-                        onChange = {(e) => setRating(e.target.value)}
+                        value = {sydneyRating}
+                        onChange = {(e) => setSydneyRating(e.target.value)}
                     >
                     </input>
                     <label className = "form-label">Comments: </label>

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import tmdbApi from '../api/tmdbApi'
 import Movies from './Movies'
 
-const IMG_API = "https://image.tmdb.org/t/p/w1280"
-
 export const SearchMovies = () => {
   
   
@@ -33,6 +31,18 @@ const handleOnChange = (e) => {
     setSearchValue(e.target.value)
 
 }
+
+const addToList = (e) => {
+    e.preventDefault();
+     //const movie = {e.value, e.vote_average, overview, sydneyRating, comments};
+     console.log(e);
+    /* movieApi.createMovie(movie).then((response) => {
+      navigatge to list movies page after button is clicked
+      navigate('/movies', { replace: true })
+  }).catch(error => {
+      console.log(error)
+  })*/
+  } 
   
     return (
         <div>
@@ -50,9 +60,14 @@ const handleOnChange = (e) => {
                    <div className ="movie-container">
                     {
                         tmdbMovies.length > 0 && 
-                        tmdbMovies.map((movie) => <Movies key={movie.id} {...movie} /> )      
-                        
+                        tmdbMovies.map((movie) => 
+                        <Movies key={movie.id} {...movie}  
+                        />
+                       
+                        )     
+                  
                     }
+ 
            
            </div>
         </div>

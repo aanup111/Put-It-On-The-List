@@ -47,10 +47,10 @@ public ResponseEntity<Movie> getMovieById(@PathVariable long id ){
 public ResponseEntity<Movie> updateMovie(@PathVariable long id, @RequestBody Movie movieDetails){
     Movie updatedMovie = movieRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Movie with id: " + id + " does not exist"));
     updatedMovie.setMovieName(movieDetails.getMovieName());
-    updatedMovie.setDirector(movieDetails.getDirector());
-    updatedMovie.setActor(movieDetails.getActor());
-    updatedMovie.setRating(movieDetails.getRating());
+    updatedMovie.setAnupRating(movieDetails.getAnupRating());
     updatedMovie.setComments(movieDetails.getComments());
+    updatedMovie.setSydneyRating(movieDetails.getSydneyRating());
+    updatedMovie.setMovieYear(movieDetails.getMovieYear());
 
     movieRepository.save(updatedMovie);
     return ResponseEntity.ok(updatedMovie);
