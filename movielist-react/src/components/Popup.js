@@ -29,7 +29,7 @@ const Popup = ({open}) => {
       <div class="right-side"></div>
     </div>
   </div>
-  <div class="text"><span>💚Be My Valentine?❣💚<br></br><br></br> 🥰 hover over me 🥰</span></div>
+  <div class="text"><span>💚Will You Be My Valentine?❣💚<br></br><br></br> 🥰 hover over me 🥰</span></div>
 </div>
 <p class="hover">- hover over the text -</p>
 </div>
